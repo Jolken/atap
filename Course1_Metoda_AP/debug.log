@@ -1,0 +1,2 @@
+[1021/231108.179:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Jolke\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments\d98ad269-ed21-4f03-ba6d-1df2a733d99c: Системе не удается найти указанный путь. (0x3)
+[1021/231108.182:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)

@@ -1,0 +1,4 @@
+C:/Users/Jolke/Documents/atap/lab3/cmake-build-debug/CMakeFiles/a.dir
+C:/Users/Jolke/Documents/atap/lab3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Jolke/Documents/atap/lab3/cmake-build-debug/CMakeFiles/b.dir
+C:/Users/Jolke/Documents/atap/lab3/cmake-build-debug/CMakeFiles/edit_cache.dir
