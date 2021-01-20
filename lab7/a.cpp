@@ -2,22 +2,46 @@
 
 using namespace std;
 
+/* INPUT
+2
+5
+1 5 4 2 3
+1 5 4 2 3
+*/
+int min(int** matrix, int n, int column)
+{
+    int result = matrix[0][column];
+    for (int i = 0; i < n; i++)
+    {
+        result = matrix[i][column] > result ? result : matrix[i][column];
+    }
+    return result;
+}
+void swap_column(int** matrix, int n, int c1, int c2)
+{
+    int tmp;
+    for (int i = 0; i < n; i++)
+    {
+        tmp = matrix[i][c1];
+        matrix[i][c1] = matrix[i][c2];
+        matrix[i][c2] = tmp;
+    }
+}
 int** sort_matr(int** matrix, int n, int m)
 {
     for (int i = 0; i < m; i++)
     {
+        for (int j = i+1; j < m; j++)
+        {
+            //cout << min(matrix, n, i) << "   " << min (matrix, n, j) << endl;
+            if (min(matrix, n, i) > min(matrix, n, j))
+            {
+                swap_column(matrix, n, i, j);
 
+            }
+        }
     }
-}
-
-int min(int* arr, n)
-{
-    int n = arr[0];
-    for (int i = 0; i < n; i++)
-    {
-        n = n>arr[i] ? arr[i] : n;
-    }
-    return n;
+    return matrix;
 }
 
 int main()
@@ -38,7 +62,7 @@ int main()
         }
     }
 
-    int **result = sort_matr(matrix, n, n);
+    int **result = sort_matr(matrix, n, m);
 
     cout << "result:" << endl;
     for (int i = 0; i<n; i++) {

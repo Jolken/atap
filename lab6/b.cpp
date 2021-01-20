@@ -8,6 +8,24 @@ struct Date
     int day;
     int month;
     int year;
+    string tostring()
+    {
+        string result;
+        if (day < 10)
+        {
+            result += '0';
+        }
+        result += to_string(day);
+        result += '-';
+        if (month < 10)
+        {
+            result += '0';
+        }
+        result += to_string(month);
+        result += '-';
+        result += to_string(year);
+        return result;
+    }
 };
 enum carType {hatchback = 'H', universal = 'U', sedan = 'S'};
 struct Car
@@ -27,12 +45,12 @@ Kalina Lada S 2008 11-12-2020 Sergeev Alexey Victorovich
 Kalina Lada H 2008 11-01-2021 Kaleno Georgiy Valerievich
 Car BMW U 1999 01-12-2020 Kulikov Valerii Maksimovich
 11-12-2020
-Lada
+Kalina
 */
 void print_car(Car car)
 {
     cout << car.model << " | " << car.manufacturer << " | " << (char)car.type << " | " << car.year << " | "
-    << car.registrationDate.day << "-" << car.registrationDate.month << "-" << car.registrationDate.year << " | " << car.FIO << endl;
+    << car.registrationDate.tostring() << " | " << car.FIO << endl;
 }
 void print_stats(map<string, int> stats)
 {
@@ -46,11 +64,8 @@ Date str_to_date(string str)
 {
     Date date = Date();
     date.day = stoi(str.substr(0,2));
-    cout << "Day - " << str.substr(0,2) << endl;
     date.month = stoi(str.substr(3,2));
-    cout << "Month - " << str.substr(3,2) << endl;
     date.year = stoi(str.substr(6,4));
-    cout << "Year - " << str.substr(6,4) << endl;
     return date;
 }
 
