@@ -30,8 +30,8 @@ int main()
 
     for (int i = 1; i < n; i++)
     {
-        string prev_surname = players[i-1].surname.tolower();
-        string surname = players[i].surname.tolower();
+        string prev_surname = players[i-1].surname;
+        string surname = players[i].surname;
         //cout << prev_surname << "  " << surname << "  " << (prev_surname > surname);
         if (prev_surname > surname)
         {

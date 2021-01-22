@@ -1,49 +1,66 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
-
-int main()
-{
-    int n;
-    cout << "n=";
-    cin >> n;
-    
-    int** matrix = new int*[n];
-    cout << "Enter matrix: ";
-    
-    for (int i = 0; i < n; i++) {
-        matrix[i] = new int[n];
-        for (int j = 0; j < n; j++) {
-            cin >> matrix[i][j];
-        }
-    }
-    
-    bool ascending_main = true;
-    bool descending_second = true;
-    for (int i = 1; i < n; i++) {
-        if (matrix[i-1][i-1] > matrix[i][i] ) {
-            ascending_main = false;
-            break;
-        }
-        
-    }
-    if (ascending_main) {
-        for (int i = n-1; i > 0; i--) {
-        if (matrix[i][n-i-1] < matrix[i-1][n-i-2] ) {
-            descending_second = false;
-            break;
-        }
-        
-        }
-    }
-    
-    if (ascending_main) {
-        cout << "Главная диагональ возрастает\n";
-        if (descending_second) {
-            cout << "Побочная диагональ убывает";
-        }
-    }
-    
-    
-    
+int StrToInt(string s,bool sign){
+ int ss = 0, i = 0;
+ while ((int)(s[i]) > 47 && (int)(s[i]) < 58)
+ {
+  ss = ss + (s[i] & 0x0F);
+  ss = ss * 10;
+  i++;
+ }
+ ss = ss / 10;
+ if (sign == true)
+  ss = -ss;
+ return(ss);
+}
+int shis(int &i,string s) {
+ bool sign = false;
+ string s1;
+ if (s[i] == '-') {
+  sign = true;
+  i++;
+ }
+ while ((int)(s[i]) > 47 && (int)(s[i]) < 58) {
+  s1.push_back(s[i]);
+  i++;
+ }
+ return StrToInt(s1, sign);
+}
+int main() {
+ string agr, inequality;
+ cout « "Do you want to check inequality(y/n)? ";
+ cin » agr;
+ int len, num_start, num_end;
+ string comparsion_operator;
+ int num1, num2;
+ bool is_num_reading = true;
+ num_start = 0;
+ while (agr == "y" || agr == "Y") {
+      cout « "Enter inequality:\n";
+      getline(cin, inequality);
+      len = inequality.length();
+      for (int i = 0; i < len; i++)
+      {
+          if (is_num_reading)
+          {
+              if (inequality[i] == '>' || inequality[i] == '<')
+              {
+                  is_num_reading = false;
+                  comparsion_operator += inequality[i];
+              }
+          }
+          if (!is_num_reading)
+          {
+              if (inequality[i] == '=')
+              {
+                  comparsion_operator += inequality[i];
+              }
+              is_num_reading = false;
+          }
+      }
+      cout « endl « "Do you want to check inequality(y/n) again? ";
+      cin » agr;
+ }
+ return 0;
 }
